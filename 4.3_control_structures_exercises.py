@@ -3,24 +3,52 @@
 # Do your work for this exercise in a file named 4.3_control_structures_exercises.py.
 
 # 1. Conditional Basics
-
 #   a. prompt the user for a day of the week, print out whether the day is Monday or not
+day_of_the_week = input("What is the day of the week? ")
+if day_of_the_week in ["Monday", "Mon", "M"]:
+    print("Today is Monday")
+else:
+    print("Today is not Monday")
 
 #   b. prompt the user for a day of the week, print out whether the day is a weekday or a weekend
+day_of_the_week = input("What is the day of the week? ")
+if day_of_the_week in ["Saturday", "Sunday"}:
+    print("Today is a weekend")
+else:
+    print("Today is a weekday")
 
 #   c. create variables and make up values for
-
 #       the number of hours worked in one week
-#       the hourly rate
-#       how much the week's paycheck will be
-#       write the python code that calculates the weekly paycheck. You get paid time and a half if you work more than 40 hours
+number_of_hours_worked_in_one_week = 40
 
+#       the hourly rate
+hourly_rate = 20
+
+#       how much the week's paycheck will be
+weeks_paycheck = number_of_hours_worked_in_one_week * hourly_rate
+print(weeks_paycheck)
+800
+#       write the python code that calculates the weekly paycheck. You get paid time and a half if you work more than 40 hours
+weeks_paycheck = number_of_hours_worked_in_one_week * hourly_rate
+
+def weekly_paycheck(number_of_hours_worked_in_one_week):
+    hourly_rate = 20
+    overtime_hours = 0
+    overtime_pay = 1.5 * hourly_rate
+    weeks_paycheck = number_of_hours_worked_in_one_week * hourly_rate
+    if number_of_hours_worked_in_one_week > 40:
+        overtime_hours = number_of_hours_worked_in_one_week - 40
+        return (overtime_hours * (overtime_pay)
+    else:
+        return number_of_hours_worked_in_one_week * hourly_rate
 # 2. Loop Basics
 
 #   a. While
-
 #       Create an integer variable i with a value of 5.
+i = 5
+
 #       Create a while loop that runs so long as i is less than or equal to 15
+
 #       Each loop iteration, output the current value of i, then increment i by one.
 
 
