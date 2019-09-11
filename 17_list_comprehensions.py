@@ -26,6 +26,16 @@ def count_vowels(numbers):
 fruits_with_more_than_two_vowels = [fruit for fruit in fruits if count_vowels(fruit)>2]
 print(fruits_with_more_than_two_vowels)
 
+#   ryan's solution
+[fruit for fruit in fruits if
+    (fruit.count('a') + fruit.count('e') fruit.count('i') fruit.count('o') fruit.count('u')) > 2]
+
+def count_vowel2(fruit):
+    fruit = fruit.lower()
+    return fruit.count('a') + fruit.count('e') fruit.count('i') fruit.count('o') fruit.count('u')) > 2
+
+[fruit for fruit in fruits if count_vowels2(fruit) > 2]
+
 # Exercise 4 - make a variable named fruits_with_only_two_vowels. The result should be ['mango', 'kiwi', 'strawberry']
 fruits_with_only_two_vowels = [fruit for fruit in fruits if count_vowels(fruit)==2]
 print(fruits_with_only_two_vowels)
@@ -70,12 +80,17 @@ print(negative_numbers)
 numbers_with_2_or_more_numerals = [number for number in numbers if number >= 10 or number <= -10]
 print(numbers_with_2_or_more_numerals)
 
+# other solutions
+[number for number in numbers if abs(number) >= 10]
+
+[number for number in numbers if len(str(abs(number))) >= 2]
+
 # Exercise 15 - Make a variable named numbers_squared that contains the numbers list with each element squared. Output is [4, 9, 16, etc...]
 numbers_squared = [number*number for number in numbers]
 print(numbers_squared)
 
 # Exercise 16 - Make a variable named odd_negative_numbers that contains only the numbers that are both odd and negative.
-odd_negative_numbers = [number for number in numbers if number < 0 and number % 2 == 1]
+odd_negative_numbers = [number for number in numbers if number < 0 and number % 2 != 0]
 print(odd_negative_numbers)
 
 # Exercise 17 - Make a variable named numbers_plus_5. In it, return a list containing each number plus five. 
