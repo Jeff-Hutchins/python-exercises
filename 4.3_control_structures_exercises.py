@@ -41,6 +41,14 @@ def weekly_paycheck(number_of_hours_worked_in_one_week):
         return (overtime_hours * (overtime_pay)
     else:
         return number_of_hours_worked_in_one_week * hourly_rate
+# Davids example
+
+if num_hours<=40:
+    paycheck=num_hours*hour_wage
+    print(paycheck)
+else:
+    paycheck=(num_hours-40)*1.5*hour_wage+40*hour_wage
+    print("The weeks paycheck will be: "+str(paycheck))
 
 # 2. Loop Basics
 
@@ -199,12 +207,21 @@ for i in range(1,50,2):
 
 pos_num = ""
 
-while True:
-    pos_num = input("please enter a positive number")
-    if pos_num.isdigit() and int(pos_num>0)
+if num_hours<=40:
+    paycheck=num_hours*hour_wage
+    print(paycheck)
+else:
+    paycheck=(num_hours-40)*1.5*hour_wage+40*hour_wage
+    print("The weeks paycheck will be: "+str(paycheck))
 
 #   e. Write a program that prompts the user for a positive integer. Next write a loop that prints
 #   out the numbers from the number the user entered down to 1.
+while True:
+    pos_num=input("Please enter a positive number")
+    if pos_num.isdigit() and int(pos_num)>0:
+        break
+for i in range(int(pos_num),0,-1):
+    print(i)
 
 # 3. Fizzbuzz
 
@@ -234,16 +251,16 @@ for number in range(1,101):
 #   Ask if the user wants to continue.
 #   Assume that the user will enter valid data.
 #   Only continue if the user agrees to.
-integer = input("Enter any integer: ")
-for integer in range(1,integer):
-    print(f'number | squared | cubed')
-    print(f'------ | ------- | -----')
-
 while True:
-    num_test = int(input("Please enter an integer"))
-    for i in range(1,num_test+1)
-    if i==1:
-        print
+    num_test=int(input("Please enter an integer"))
+    for i in range(1,num_test+1):
+        if i==1:
+            print('number  | squared  | cubed')
+            print('______  |  ______  |  ______')
+    print(i,'  |', i**2,'  |',i**3)
+    user_choice=input("Should we continue ?")
+    if user_choice="no":
+        break
 
 
 
@@ -264,13 +281,21 @@ while True:
 
 # 5. Convert given number grades into letter grades.
 while True:
-    num_grade = input("Please enter a grade between 0 and 100")
-    num_grade = int(num_grade)
-    if num_grade >= 88:
+    num_grade=input("Please enter a grade between 0 and 100")
+    num_grade=int(num_grade)
+    if num_grade>=88:
         print('A')
-    elif num_grade >= 80:
+    elif num_grade>=80:
         print('B')
-    
+    elif num_grade>=67:
+        print('C')
+    elif num_grade>=60:
+        print('D') 
+    else:
+        print('F')
+    prompt_user_continue=input("Would you like to continue? Y/N") 
+    if prompt_user_continue.upper()=="N":
+        break
 
 #   Prompt the user for a numerical grade from 0 to 100.
 #   Display the corresponding letter grade.
@@ -290,3 +315,8 @@ while True:
 # 6. Create a list of dictionaries where each dictionary represents a book that you have read. Each dictionary in the list should have the keys title, author, and genre. Loop through the list and print out information about each book.
 
 #   a. Prompt the user to enter a genre, then loop through your books list and print out the titles of all the books in that genre.
+
+def add_one(x):
+    return x + 1
+
+
