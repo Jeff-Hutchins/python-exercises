@@ -41,6 +41,7 @@ def weekly_paycheck(number_of_hours_worked_in_one_week):
         return (overtime_hours * (overtime_pay)
     else:
         return number_of_hours_worked_in_one_week * hourly_rate
+
 # 2. Loop Basics
 
 #   a. While
@@ -48,27 +49,85 @@ def weekly_paycheck(number_of_hours_worked_in_one_week):
 i = 5
 
 #       Create a while loop that runs so long as i is less than or equal to 15
-
+while i <= 15:
+    print(i)
+    
 #       Each loop iteration, output the current value of i, then increment i by one.
-
+while i <= 15:
+    print(i)
+    i += 1
 
 #       Create a while loop that will count by 2's starting with 0 and ending at 100. Follow each number with a new line.
-#       Alter your loop to count backwards by 5's from 100 to -10.
-#       Create a while loop that starts at 2, and displays the number squared on each line while the number is less than 1,000,000. Output should equal:
+i = 0
+while i < 100:
+    print(i)
+    i += 2
 
+for i in range(0,102,2):
+    print(i)
+
+#       Alter your loop to count backwards by 5's from 100 to -10.
+i = 100
+while i > -10:
+    print(i)
+    i -= 5
+
+for i in range(100,-10,5):
+    print(i)
+
+#       Create a while loop that starts at 2, and displays the number squared on each line while the number is less than 1,000,000. Output should equal:
+i = 2
+while i**2 < 1_000_000:
+    print(i**2)
+    i = i**2
+
+i = 2
+while i<1000000:
+    print(i)
+    i = i ** 2
+    
 
 #       Write a loop that uses print to create the output shown below.
+i = 100
+while i > 5:
+    print(i)
+    i -= 5
 
+for i in range(100,0,-5):
+    print(i)
 
 
 #   b. For Loops
-
 #       i. Write some code that prompts the user for a number, then shows a multiplication table up through 10 for that number.
+number = int(input("Enter one number greater than 0 and less than or equal to 10: "))
+if number <= 10:
+    print (f'{number} * 1 =', number * 1)
+    print (f'{number} * 2 =', number * 2)
+    print (f'{number} * 3 =', number * 3)
+    print (f'{number} * 4 =', number * 4)
+    print (f'{number} * 5 =', number * 5)
+    print (f'{number} * 6 =', number * 6)
+    print (f'{number} * 7 =', number * 7)
+    print (f'{number} * 8 =', number * 8)
+    print (f'{number} * 9 =', number * 9)
+    print (f'{number} * 10 =', number * 10) 
 
+else:
+    print("You didn't follow the rules")
+
+num = input("Enter a number")
+num = int(num)
+for i in range(1,11):
+    print(str(i)+"*"+str(num)+"="+str(i*num))
 
 #       ii. Create a for loop that uses print to create the output shown below.
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+for number in numbers:
+    number = str(number) * number
+    print(number)
 
-
+for num in range(1,10):
+    print
 # 1
 # 22
 # 333
@@ -80,8 +139,27 @@ i = 5
 # 999999999
 
 #   c. break and continue
+#       i. Prompt the user for an odd number between 1 and 50. Use a loop and a break statement to continue 
+#          prompting the user if they enter invalid input. (Hint: use the isdigit method on strings to determine this).
+#          Use a loop and the continue statement to output all the odd numbers between 1 and 50, except for the number the user entered.
+number = input("Enter an odd number between 1 and 50: ")
+while number in range()
 
-#       i. Prompt the user for an odd number between 1 and 50. Use a loop and a break statement to continue prompting the user if they enter invalid input. (Hint: use the isdigit method on strings to determine this). Use a loop and the continue statement to output all the odd numbers between 1 and 50, except for the number the user entered.
+    print(f'Here is an odder number: ')
+
+    print(number)
+
+
+odd_num = ""
+while True:
+    odd_num = input("enter an odd number between 1 and 50: ")
+    if odd_num.isdigit() and int(odd_num)%2==1 and int(odd_num)>1 and int(odd_num)<50:
+        break
+for i in range(1,50,2):
+    if i==int(odd_num):
+        print("Yikes! Skipping number: "+str(i))
+        continue
+    print("Here is an odd number: "+str(i))
 
 # Your output should look like this:
 
@@ -114,18 +192,40 @@ i = 5
 # Here is an odd number: 47
 # Here is an odd number: 49
 
-#   d. The input function can be used to prompt for input and use that input in your python code. Prompt the user to enter a positive number and write a loop that counts from 0 to that number. (Hints: first make sure that the value the user entered is a valid number, also note that the input function returns a string, so you'll need to convert this to a numeric type.)
+#   d. The input function can be used to prompt for input and use that input in your python code. 
+#   Prompt the user to enter a positive number and write a loop that counts from 0 to that number. 
+#   (Hints: first make sure that the value the user entered is a valid number, also note that the 
+#   input function returns a string, so you'll need to convert this to a numeric type.)
 
-#   e. Write a program that prompts the user for a positive integer. Next write a loop that prints out the numbers from the number the user entered down to 1.
+pos_num = ""
+
+while True:
+    pos_num = input("please enter a positive number")
+    if pos_num.isdigit() and int(pos_num>0)
+
+#   e. Write a program that prompts the user for a positive integer. Next write a loop that prints
+#   out the numbers from the number the user entered down to 1.
 
 # 3. Fizzbuzz
 
-# One of the most common interview questions for entry-level programmers is the FizzBuzz test. Developed by Imran Ghory, the test is designed to test basic looping and conditional logic skills.
+#   One of the most common interview questions for entry-level programmers is the FizzBuzz test.
+#   Developed by Imran Ghory, the test is designed to test basic looping and conditional logic skills.
 
 #   Write a program that prints the numbers from 1 to 100.
 #   For multiples of three print "Fizz" instead of the number
 #   For the multiples of five print "Buzz".
 #   For numbers which are multiples of both three and five print "FizzBuzz".
+for number in range(1,101):
+    if number % 3 == 0 and number % 5 == 0:
+        print("FizzBuzz")
+    elif number % 3 == 0:
+        print("Fizz")
+    elif number % 5 == 0:
+        print("Buzz")
+    else:
+        print(number)
+
+
 
 # 4. Display a table of powers.
 
@@ -134,8 +234,20 @@ i = 5
 #   Ask if the user wants to continue.
 #   Assume that the user will enter valid data.
 #   Only continue if the user agrees to.
-#   Example Output
+integer = input("Enter any integer: ")
+for integer in range(1,integer):
+    print(f'number | squared | cubed')
+    print(f'------ | ------- | -----')
 
+while True:
+    num_test = int(input("Please enter an integer"))
+    for i in range(1,num_test+1)
+    if i==1:
+        print
+
+
+
+# Example Output
 # What number would you like to go up to? 5
 
 # Here is your table!
@@ -151,6 +263,14 @@ i = 5
 # Bonus: Research python's format string specifiers to align the table
 
 # 5. Convert given number grades into letter grades.
+while True:
+    num_grade = input("Please enter a grade between 0 and 100")
+    num_grade = int(num_grade)
+    if num_grade >= 88:
+        print('A')
+    elif num_grade >= 80:
+        print('B')
+    
 
 #   Prompt the user for a numerical grade from 0 to 100.
 #   Display the corresponding letter grade.
