@@ -92,7 +92,9 @@ remove_vowels("Jeff")
 # First Name will become first_name
 # % Completed will become completed
 def normalize_name(string):
-    
+    #strip() lower() replace(" ", "_")
+    return string.lower().strip('%').strip().replace(" ", "_")
+normalize_name('% Completed')
 
 # 11. Write a function named cumsum that accepts a list of numbers and returns a list that is the cumulative sum of the numbers in the list.
 # cumsum([1, 1, 1]) returns [1, 2, 3]
