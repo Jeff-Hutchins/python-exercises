@@ -283,11 +283,11 @@ while True:
 while True:
     num_grade=input("Please enter a grade between 0 and 100")
     num_grade=int(num_grade)
-    if num_grade>=88:
+    if num_grade>=90:
         print('A')
     elif num_grade>=80:
         print('B')
-    elif num_grade>=67:
+    elif num_grade>=70:
         print('C')
     elif num_grade>=60:
         print('D') 
