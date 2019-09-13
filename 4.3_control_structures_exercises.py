@@ -12,7 +12,7 @@ else:
 
 #   b. prompt the user for a day of the week, print out whether the day is a weekday or a weekend
 day_of_the_week = input("What is the day of the week? ")
-if day_of_the_week in ["Saturday", "Sunday"}:
+if day_of_the_week in ["Saturday", "Sunday"]:
     print("Today is a weekend")
 else:
     print("Today is a weekday")
