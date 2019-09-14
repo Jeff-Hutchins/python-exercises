@@ -145,14 +145,15 @@ remove_vowels("Jeff")
 # First Name will become first_name
 # % Completed will become completed
 def normalize_name(string):
-    # 1st iteration >>>>>  return string.lower().strip('%').strip().replace(" ", "_") for i in stuff
     for i in string:
         if not i.isidentifier():
             string = string.replace(i, " ")
     string = string.lower().strip('%').strip().replace(" ", "_") 
     return string
 
-normalize_name('8888Completed')
+# 1st iteration >>>>>  return string.lower().strip('%').strip().replace(" ", "_") for i in stuff
+
+normalize_name(' Completed')
 
 # 11. Write a function named cumsum that accepts a list of numbers and returns a list that is the cumulative sum of the numbers in the list.
 # cumsum([1, 1, 1]) returns [1, 2, 3]
@@ -224,3 +225,40 @@ def col_index(column_name):
 #     return string.split(",")
 
 # print(insert_comma("abcdefghijklmnopqrstuvwxyz"))
+
+
+# More Bonus
+def add(x, y):
+    return x + y
+
+def subtract(x, y):
+    return x - y
+
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    return x / y
+
+# add x for y times
+def multiply(x, y):
+    product = 0
+    for i in range(0, y):
+        product += x
+    return product
+
+multiply(6, 7)
+
+
+divide(80, 10)
+
+def division(numerator,denominator):
+    if denominator == 0:
+        raise ZeroDivisionError
+    fraction  = 0
+    while numerator >= denominator:
+          numerator = numerator - denominator
+          fraction  = fraction + 1
+    return fraction 
+
+division(80, 10)
