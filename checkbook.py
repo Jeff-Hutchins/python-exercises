@@ -19,7 +19,7 @@ def withdraw(i):
     Withdraws amount of money that is entered into the function and
     displays updated current balance.
     '''
-    converted_i = (float(i))
+    converted_i = abs((float(i)))
     f = open ("checkbook_storage.txt", "a")
     f.write('\n')
     subtract = str((converted_i) *-1)
@@ -43,7 +43,7 @@ def deposit(i):
     Deposits amount of money entered into the function and
     displays updated current balance.
     '''
-    converted_i = (float(i))
+    converted_i = abs((float(i)))
     f = open ("checkbook_storage.txt", "a")
     f.write('\n')
     subtract = str(converted_i)
