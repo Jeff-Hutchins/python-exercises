@@ -1,6 +1,9 @@
-
+# Starts with my 3 functions.  My while loop is below.
 
 def current_balance():
+    '''
+    Pulls current balance from my checkboo_storage.txt file.
+    '''
     f = open("checkbook_storage.txt","r")
     contents = f.readlines()
     amt = 0
@@ -12,6 +15,10 @@ def current_balance():
 
 
 def withdraw(i):
+    '''
+    Withdraws amount of money that is entered into the function and
+    displays updated current balance.
+    '''
     converted_i = (float(i))
     f = open ("checkbook_storage.txt", "a")
     f.write('\n')
@@ -23,11 +30,19 @@ def withdraw(i):
     for x in contents:
         x = float(x)
         amt = x + amt
-    print(amt)
+    print(
+        '\n'
+        f'Current Balance: ${amt}'
+        '\n'
+        )
     f.close()
     
 
 def deposit(i):
+    '''
+    Deposits amount of money entered into the function and
+    displays updated current balance.
+    '''
     converted_i = (float(i))
     f = open ("checkbook_storage.txt", "a")
     f.write('\n')
@@ -39,27 +54,28 @@ def deposit(i):
     for x in contents:
         x = float(x)
         amt = x + amt
-    print(amt)
+    print(
+        '\n'
+        f'Current Balance: ${amt}'
+        '\n'
+        )
     f.close()
 
-welcome = "~~~ Welcome to your terminal checkbook! ~~~"
-print(welcome)
-
-
-# choice = input("Your choice? ")
-# debit = input("How much would you like to withdraw? ")
-# credit = input("How much would you like to deposit? ")
-# bye = "Have a great day!"
+# welcome = "~~~ Welcome to your terminal checkbook! ~~~"
+# print(welcome)
 
 
 while True:
     print(
+        "\n"
+        "~~~ Welcome to your terminal checkbook! ~~~\n"
+        "\n"
         "What would you like to do? \n"
         "                           \n"
         "1) View current balance?\n"
         "2) Record a debit (withdraw)\n"
-        "3) record a credit (deposit)\n"
-        "4) exit\n"
+        "3) Record a credit (deposit)\n"
+        "4) Exit\n"
     )
     choice = input("Your choice? ")
     if choice == '1':
@@ -71,7 +87,11 @@ while True:
         credit = input(f'Enter amount you would like to deposit: $')
         deposit(credit)
     elif choice == '4':
-        print('bye')
+        print(
+            '\n'
+            'Goodbye! Have a nice Day.'
+            '\n'
+            )
         break
     else:
         print(f"Invalid choice: {i}")
