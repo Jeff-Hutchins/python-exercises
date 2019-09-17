@@ -89,7 +89,7 @@ while True:
     elif choice == '4':
         print(
             '\n'
-            'Goodbye! Have a nice Day.'
+            'Thanks! Have a nice Day.'
             '\n'
             )
         break
