@@ -94,5 +94,9 @@ while True:
             )
         break
     else:
-        print(f"Invalid choice: {i}")
+        print(
+            '\n'
+            'Invalid choice'
+            '\n'
+            )
 
