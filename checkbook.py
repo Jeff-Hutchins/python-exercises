@@ -1,41 +1,78 @@
-checkbook = [{"Balance": 100.00}]
-print(checkbook[0]["Balance"])
 
 
-welcome = "~~~ Welcome to your terminal checkbook! ~~~"
+def current_balance():
+    f = open("checkbook_storage.txt","r")
+    contents = f.readlines()
+    amt = 0
+    for x in contents:
+        x = float(x)
+        amt = x + amt
+    return amt
+    f.close()
 
-print(welcome)
-print("                          ")
-print("What would you like to do?")
-print("                          ")
-print("1) view current balance")
-print("2) record a debit (withdraw)")
-print("3) record a credit (deposit)")
-print("4) exit")
-print("                          ")
-choice = input("Your choice? ")
-debit = input("How much would you like to withdraw? ")
-credit = input("How much would you like to deposit? ")
-bye = "Have a great day!"
-
-def loop(choice):
-    if choice == 1:
-        return current_balance
-    elif choice == 2:
-        return withdraw
-    elif choice == 3:
-        return deposit
-    elif choice == 4:
-        return bye
-    else:
-        return f"Invalid choice: {i}"
-
-
-def current_balance(i):
-    return checkbook[0]["Balance"]
 
 def withdraw(i):
-    return current_balance -= i
+    converted_i = (float(i))
+    f = open ("checkbook_storage.txt", "a")
+    f.write('\n')
+    subtract = str((converted_i) *-1)
+    f.write(subtract)
+    f = open("checkbook_storage.txt","r")
+    contents = f.readlines()
+    amt = 0
+    for x in contents:
+        x = float(x)
+        amt = x + amt
+    print(amt)
+    f.close()
+    
 
-def deposit(i):ß
-    return current_balance += i
+def deposit(i):
+    converted_i = (float(i))
+    f = open ("checkbook_storage.txt", "a")
+    f.write('\n')
+    subtract = str(converted_i)
+    f.write(subtract)
+    f = open("checkbook_storage.txt","r")
+    contents = f.readlines()
+    amt = 0
+    for x in contents:
+        x = float(x)
+        amt = x + amt
+    print(amt)
+    f.close()
+
+welcome = "~~~ Welcome to your terminal checkbook! ~~~"
+print(welcome)
+
+
+# choice = input("Your choice? ")
+# debit = input("How much would you like to withdraw? ")
+# credit = input("How much would you like to deposit? ")
+# bye = "Have a great day!"
+
+
+while True:
+    print(
+        "What would you like to do? \n"
+        "                           \n"
+        "1) View current balance?\n"
+        "2) Record a debit (withdraw)\n"
+        "3) record a credit (deposit)\n"
+        "4) exit\n"
+    )
+    choice = input("Your choice? ")
+    if choice == '1':
+        print(f'Current Balance: ${current_balance()}')
+    elif choice == '2':
+        debit = input(f'Enter amount you would like to withdraw: $')
+        withdraw(debit)
+    elif choice == '3':
+        credit = input(f'Enter amount you would like to deposit: $')
+        deposit(credit)
+    elif choice == '4':
+        print('bye')
+        break
+    else:
+        print(f"Invalid choice: {i}")
+
