@@ -61,9 +61,9 @@ def deposit(i):
         )
     f.close()
 
-# welcome = "~~~ Welcome to your terminal checkbook! ~~~"
-# print(welcome)
-
+# Accepts inputs 1-4.  Checks current balance, allows withdrawals, 
+# allows deposits.  If any other number is chosen it says invalid choice
+# then returns to the main menu.
 
 while True:
     print(
