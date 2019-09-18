@@ -1,6 +1,14 @@
+# Jeffrey Hutchins -- Python Project -- Command Line Checkbook Application
+
+# This .py file is to be accessed through the command line.  It will prompt the user to 
+# choose a number 1-4 in order to see their current balance, withdraw money, deposit money, or exit.  The balance
+# of the bank account will persist by using a .txt file for storage.
+
+
 # !!! Text file must initially have a 0 in it to work correctly !!!
 
 # Starts with my 3 functions.  My while loop is below.
+# while loop is below the 3 functions.
 
 def current_balance():
     '''
