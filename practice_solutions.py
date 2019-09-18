@@ -47,6 +47,7 @@ def keep_long_words(words):
             long_words.append(word)
     return long_words
 
+print(keep_long_words(['ls', 'codeup', 'code', 'pip', 'bayes']))
 
 def make_model(cars):
     '''
@@ -78,3 +79,19 @@ def extract_time_components(s):
         'seconds': seconds
     }
     return my_dict
+
+
+def greeting(x='hello', y = 'world'):
+    return x + ' ' + y
+
+print(greeting("whats", "up"))
+
+def list_of_numbers(*x):
+    numbers = []
+    for i in x:
+        if int(i) > 3:
+            numbers.append(x)
+    return numbers
+
+print(list_of_numbers(1))
+
