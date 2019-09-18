@@ -18,8 +18,9 @@ def current_balance():
 
 def withdraw(i):
     '''
-    Withdraws amount of money that is entered into the function and
-    displays updated current balance.
+    Appends checkbook_storage.txt with the entered withdraw amount on the next line multiplied by -1 . 
+    It then reads checkbook_storage.txt, takes in all transactions into a list of strings, changes
+    them to a float, and outputs the sum.  The sum being the new current balance for the account.
     '''
     converted_i = abs((float(i)))
     f = open ("checkbook_storage.txt", "a")
@@ -42,8 +43,9 @@ def withdraw(i):
 
 def deposit(i):
     '''
-    Deposits amount of money entered into the function and
-    displays updated current balance.
+    Appends checkbook_storage.txt with the deposit amount on the next line.  It then reads
+    checkbook_storage.txt, takes in all transactions into a list of strings, changes them to a
+    float, and outputs the sum.  The sum being the new current balance for the account.
     '''
     converted_i = abs((float(i)))
     f = open ("checkbook_storage.txt", "a")
@@ -63,7 +65,7 @@ def deposit(i):
         )
     f.close()
 
-# Accepts inputs 1-4.  Checks current balance, allows withdrawals, 
+# Accepts inputs 1-4.  Checks current balance, allows withdrawals, and
 # allows deposits.  If any other number is chosen it says invalid choice
 # then returns to the main menu.
 
