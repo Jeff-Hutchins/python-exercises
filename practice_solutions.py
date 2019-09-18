@@ -48,7 +48,6 @@ def keep_long_words(words):
     return long_words
 
 print(keep_long_words(['ls', 'codeup', 'code', 'pip', 'bayes']))
-
 def make_model(cars):
     '''
     >>> cars = []
