@@ -1,3 +1,5 @@
+# !!! Text file must initially have a 0 in it to work correctly !!!
+
 # Starts with my 3 functions.  My while loop is below.
 
 def current_balance():
