@@ -36,6 +36,8 @@ plt.show()
 x = range(-10, 10)
 y = [i**2-i+2 for i in x]
 plt.plot(x,y, c='blue')
+plt.annotate('(0, 0)', xy=(0, 0), xytext=(2, 1),
+             arrowprops={'facecolor': 'blue'})
 plt.show()
 
 # 2. Create and label 4 separate charts for the following 
@@ -44,22 +46,30 @@ plt.show()
 x = range(0, 10)
 y = [i**.5 for i in x]
 plt.plot(x,y, c='red')
+plt.xlabel('$x$')
+plt.ylabel('$\sqrt{x}$')
 plt.show
 
 x = range(0, 10)
 y = [i**3 for i in x]
 plt.plot(x,y, c='yellow')
+plt.xlabel('$x$')
+plt.ylabel('${x^3}$')
 plt.show
 
 x = np.arange(-10, 10, .1)
 y = [math.tan(i) for i in x]
 plt.plot(x,y, c='orange')
 plt.ylim(-10,10)
+plt.xlabel('$x$')
+plt.ylabel('$tan({x})$')
 plt.show
 
 x = range(-10, 10)
 y = [2**i for i in x]
 plt.plot(x,y, c='purple')
+plt.xlabel('$x$')
+plt.ylabel('${2^x}$')
 plt.show
 
 # x = np.linspace(-2 * np.pi, 2 * np.pi, 1000)
@@ -110,6 +120,8 @@ plt.plot(x,y1, c='red', label='$\sqrt{x}$')
 plt.plot(x,y2, c='yellow', label='${x^3}$')
 plt.plot(x,y3, c='orange', label='$tan({x})$')
 plt.plot(x,y4, c='purple', label='${2^x}$')
+
+plt.ylim(-5,5)
 
 plt.legend(loc='upper left', prop={'size': 4})
 plt.title('wow')
