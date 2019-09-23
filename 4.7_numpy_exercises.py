@@ -18,6 +18,17 @@ np.count_nonzero(a[a > 0])
 positive_numbers = a[a > 0]
 np.count_nonzero(positive_numbers[positive_numbers % 2 == 0])
 
+    # or Ryan's example;
+
+is_positive_mask = a > 0
+positives = a[is_positive_mask]
+
+is_even_mask = positives % 2 == 0
+positive_evens = positives[is_even_mask]
+len(positive_evens)
+
+    # can also use the np.logical_and method from numpy.
+
 # If you were to add 3 to each data point, how many positive numbers
 # would there be?
 
@@ -28,8 +39,8 @@ np.count_nonzero(pos_plus_3[pos_plus_3 % 2 == 0])
 # deviation be?
 
 a_squared = a**2
-a_squared.mean()
-a_squared.std()
+print('Mean', a_squared.mean())
+print('Standard Deviation', a_squared.std())
 
 # A common statistical operation on a dataset is centering. This means 
 # to adjust the data such that the center of the data is at 0. This is
@@ -67,21 +78,40 @@ max_of_a = a.max()
 
 # Exercise 4 - Make a variable named mean_of_a to hold the average of all the numbers in the above list
 
+mean_of_a = sum(a) / len(a)
 mean_of_a = a.mean()
 
 # Exercise 5 - Make a variable named product_of_a to hold the product of multiplying all the numbers in the above list together
+
+product_of_a = 1:
+for number in a:
+    product_of_a *= number
+print(product_of_a)
 
 product_of_a = np.prod(a)
 
 # Exercise 6 - Make a variable named squares_of_a. It should hold each number in a squared like [1, 4, 9, 16, 25...]
 
+squares_of_a = [num**2 for num in a]
 squares_of_a = a**2
 
 # Exercise 7 - Make a variable named odds_in_a. It should hold only the odd numbers
 
+odds_in_a = []
+for num in a:
+    if num % 2 == 1:
+        odds_in_a.append(num)
+print(odds_in_a)
+
 odds_in_a = a[a % 2==1]
 
 # Exercise 8 - Make a variable named evens_in_a. It should hold only the evens.
+
+evens_in_a = []
+for num in a:
+    if num % 2 == 0:
+        evens_in_a.append(num)
+print(evens_in_a)
 
 evens_in_a = a[a % 2 ==0]
 
@@ -101,6 +131,7 @@ for row in b:
     sum_of_b += sum(row)
 print(sum_of_b)
 
+b.sum()
 b_combined_lists.sum()
 
 # Exercise 2 - refactor the following to use numpy. 
