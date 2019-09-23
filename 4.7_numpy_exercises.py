@@ -259,3 +259,5 @@ print((d.T).shape)
 
 d.reshape(9,2)
 
+
+    
