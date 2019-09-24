@@ -163,6 +163,7 @@ for row in b:
     for number in row:
         squares_of_b.append(number**2)
 
+b**2
 b_combined_lists ** 2
 
 # Exercise 7 - refactor using numpy to determine the odds_in_b
@@ -185,7 +186,8 @@ b[b % 2==0]
 
 # Exercise 9 - print out the shape of the array b.
 
-b.shape
+b.shape  # shape is a property or variable that lives on that object, 
+         # hince why it doesn't need ()
 
 # Exercise 10 - transpose the array b.
 
@@ -194,6 +196,8 @@ b.T
 # Exercise 11 - reshape the array b to be a single list of 6 numbers. (1 x 6)
 
 b.reshape(1,6)
+
+b.flatten()
 
 # Exercise 12 - reshape the array b to be a list of 6 lists, each containing only 1 number (6 x 1)
 
@@ -208,19 +212,19 @@ c = np.array([
 
 # HINT, you'll first need to make sure that the "c" variable is a numpy array prior to using numpy array methods.
 # Exercise 1 - Find the min, max, sum, and product of c.
-c_combined_list = np.array(c[0]+c[1]+c[2])
-c_combined_list.min()
-c_combined_list.max()
-c_combined_list.sum()
-c_combined_list.prod()
+
+c.min()
+c.max()
+c.sum()
+c.prod()
 
 # Exercise 2 - Determine the standard deviation of c.
 
-c_combined_list.std()
+c.std()
 
 # Exercise 3 - Determine the variance of c.
 
-c_combined_list.var()
+c.var()
 
 # Exercise 4 - Print out the shape of the array c
 
@@ -244,6 +248,9 @@ sum_c_times_cT.sum()
 sum_c_times_cT.prod()
 
 ## Setup 4
+# np.arra(a)  <-- calling the .array function on np class
+# np.sum(a)  <-- calling the .sum function on the np class, sending a
+# a.sum()   <-- calling .sum method on the array object itself
 d = np.array([
     [90, 30, 45, 0, 120, 180],
     [45, -90, -30, 270, 90, 0],
@@ -276,7 +283,7 @@ np.unique(d)
 
 # Exercise 7 - Determine how many unique numbers there are in d.
 
-np.count_nonzero(np.unique(d))
+len(np.unique(d))
 
 # Exercise 8 - Print out the shape of d.
 
