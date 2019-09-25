@@ -65,18 +65,21 @@ def count_vowels(word):
             count += 1
     return count
 
-fruits.apply(count_vowels)
+vowels_per_fruit = pd.Series(fruits.apply(count_vowels))
+list(zip(fruits.unique(), vowels_per_fruit))
 
 
 # Use the .apply method and a lambda function to find the fruit(s) containing two or more "o" 
 # letters in the name.
 
-fruits[fruits.apply(lambda x: x.count('o'))>1]
+fruits[fruits.apply(lambda x: x.count('o'))>=2]
 fruits
 
 # Write the code to get only the fruits containing "berry" in the name
 
 fruits[fruits.str.find('berry')>-1]
+fruits[fruits.str.contains('berry')]
+fruits[fruits.apply(lambda x: 'berry' in x)]
 
 # Write the code to get only the fruits containing "apple" in the name
 
@@ -84,7 +87,7 @@ fruits[fruits.str.find('apple')>-1]
 
 # Which fruit has the highest amount of vowels?
 
-fruits[fruits.apply(count_vowels).max()]
+fruits[fruits.apply(count_vowels).idxmax()]
 
 # Use pandas to create a Series from the following data:
 dollars = pd.Series(['$796,459.41', '$278.60', '$482,571.67', '$4,503,915.98', '$2,121,418.3', '$1,260,813.3', '$87,231.01', '$1,509,175.45', '$4,138,548.00', '$2,848,913.80', '$594,715.39', '$4,789,988.17', '$4,513,644.5', '$3,191,059.97', '$1,758,712.24', '$4,338,283.54', '$4,738,303.38', '$2,791,759.67', '$769,681.94', '$452,650.23'])
@@ -96,7 +99,7 @@ type(dollars)
 
 # Use series operations to convert the series to a numeric data type.
 
-dollars = dollars.str.replace('$',' ').str.strip().str.replace(',','_').str.replace('.','_').astype(int)
+dollars = dollars.str.replace('$',' ').str.strip().str.replace(',','_').astype(float)
 dollars
 
 # What is the maximum value? The minimum?
@@ -118,6 +121,7 @@ exam_scores = pd.Series([60, 86, 75, 62, 93, 71, 60, 83, 95, 78, 65, 72, 69, 81,
 
 # What is the minimum exam score? The max, mean, median?
 
+exam_scores.describe()
 exam_scores
 exam_scores.max()
 exam_scores.mean()
@@ -130,7 +134,7 @@ exam_scores.hist()
 # Convert each of the numbers above into a letter grade. For example, 86 should be a 'B' 
 # and 95 should be an 'A'.
 
-pd.cut(exam_scores, [0, 70, 80, 90, 100], labels=['F','C','B','A'])
+pd.cut(exam_scores, bins = [0, 70, 80, 90, 100], labels=['F','C','B','A'])
 
 # Write the code necessary to implement a curve. I.e. that grade closest to 100 should be converted 
 # to a 100, and that many points should be given to every other score as well.
@@ -143,10 +147,14 @@ string
 # What is the most frequently occuring letter? Least frequently occuring?
 
 string[string.value_counts().max()]
+string[string.value_counts().min()]
+
+string.value_counts().head(1)
 
 # How many vowels are in the list?
 
-string.apply(count_vowels)
+string.apply(count_vowels).sum()
+len([c for c in string if c in 'aeiou'])
 
 # How many consonants are in the list?
 
@@ -157,7 +165,7 @@ def count_consonants(word):
             count += 1
     return count
 
-string.apply(count_consonants)
+string.apply(count_consonants).sum()
 
 # Create a series that has all of the same letters, but uppercased
 
@@ -165,4 +173,6 @@ string.str.upper()
 
 # Create a bar plot of the frequencies of the 6 most frequently occuring letters.
 
-string.value_counts().head(6).plot.bar()
+string.value_counts().head(6).plot.bar(title= 'Six most frequent occuring Letters')
+plt.xlabel('letters')
+plt.ylabel('frequency')
