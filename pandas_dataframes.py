@@ -212,3 +212,4 @@ hoppers = pd.Series(mammals[mammals['hoppers']])
 
 hoppers[hoppers['speed'] > 48.0]
 
+
