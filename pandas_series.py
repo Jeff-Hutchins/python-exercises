@@ -76,14 +76,11 @@ fruits
 
 # Write the code to get only the fruits containing "berry" in the name
 
-fruits[fruits.apply(lambda x: x.find('berry'))]
-fruits[fruits.str.find('berry')]
-fruits.str.findall('berry')
-type(fruits.str.find('berry'))
+fruits[fruits.str.find('berry')>-1]
 
 # Write the code to get only the fruits containing "apple" in the name
 
-
+fruits[fruits.str.find('apple')>-1]
 
 # Which fruit has the highest amount of vowels?
 
@@ -138,19 +135,18 @@ pd.cut(exam_scores, [0, 70, 80, 90, 100], labels=['F','C','B','A'])
 # Write the code necessary to implement a curve. I.e. that grade closest to 100 should be converted 
 # to a 100, and that many points should be given to every other score as well.
 
-
+exam_scores + [100 - exam_scores.max()]
 
 # Use pandas to create a Series from the following string:
-string = pd.Series('hnvidduckkqxwymbimkccexbkmqygkxoyndmcxnwqarhyffsjpsrabtjzsypmzadfavyrnndndvswreauxovncxtwzpwejilzjrmmbbgbyxvjtewqthafnbkqplarokkyydtubbmnexoypulzwfhqvckdpqtpoppzqrmcvhhpwgjwupgzhiofohawytlsiyecuproguy')
-
+string = pd.Series(list('hnvidduckkqxwymbimkccexbkmqygkxoyndmcxnwqarhyffsjpsrabtjzsypmzadfavyrnndndvswreauxovncxtwzpwejilzjrmmbbgbyxvjtewqthafnbkqplarokkyydtubbmnexoypulzwfhqvckdpqtpoppzqrmcvhhpwgjwupgzhiofohawytlsiyecuproguy'))
+string
 # What is the most frequently occuring letter? Least frequently occuring?
 
-
+string[string.value_counts().max()]
 
 # How many vowels are in the list?
 
 string.apply(count_vowels)
-string.apply(lambda x: x.count() for x if x in 'aeiou')
 
 # How many consonants are in the list?
 
@@ -169,4 +165,4 @@ string.str.upper()
 
 # Create a bar plot of the frequencies of the 6 most frequently occuring letters.
 
-pd.value_counts(string)
+string.value_counts().head(6).plot.bar()
