@@ -207,9 +207,7 @@ mammals.sort_values(by='speed', ascending=False).head(1)
 
 mammals['speed'].median()
 mammals['speed'][mammals['speed'] > 48.0]
-
-hoppers = pd.Series(mammals[mammals['hoppers']])
-
-hoppers[hoppers['speed'] > 48.0]
-pandas is awesome
-
+hoppers = mammals['speed'][mammals['hoppers']] > mammals['speed'].median()
+sum_hoppers = sum(mammals.hoppers)
+sum_hoppers_above_median_speed = sum((mammals.hoppers == True) & (mammals.speed > mammals.speed.median()))
+(sum_hoppers_above_median_speed / sum_hoppers) * 100
