@@ -211,5 +211,5 @@ mammals['speed'][mammals['speed'] > 48.0]
 hoppers = pd.Series(mammals[mammals['hoppers']])
 
 hoppers[hoppers['speed'] > 48.0]
-
+pandas is awesome
 
