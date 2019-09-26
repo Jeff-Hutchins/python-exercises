@@ -40,6 +40,8 @@ length_of_longest_string = fruits.str.len().max()
 index_of_longest_string = fruits.str.len().idxmax()
 longest_string = fruits[index_of_longest_string]
 
+fruits[fruits.str.len().idxmax()]
+
 print("The longest string in the list of fruits is", longest_string, "and it has", length_of_longest_string)
 
 # Find the fruit(s) with 5 or more letters in the name.
