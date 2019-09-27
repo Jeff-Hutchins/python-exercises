@@ -24,7 +24,7 @@ mpg['manufacturer'].unique().size
 mpg['average_mileage'] = (mpg['cty'] + mpg['hwy'])/2
 
 manufacturers = mpg.groupby(['manufacturer']).mean()
-
+manufacturers.sort_values(by='average_mileage', ascending=False)
 manufacturers['average_mileage'].idxmax()
 
 #   b. How many different manufacturers are there?
@@ -33,19 +33,18 @@ mpg['manufacturer'].unique().size
 
 #   c. How many different models are there?
 
-# models = mpg.groupby(['model']).mean()
-
 mpg.model.unique().size
 
 #   d. Do automatic or manual cars have better miles per gallon?
 
-# fruits[fruits.apply(lambda x: 'berry' in x)]
 auto_trans_grouped = mpg[mpg['trans'].str.contains('auto')].groupby(['trans']).mean()
 manual_trans_grouped = mpg[mpg['trans'].str.contains('manual')].groupby(['trans']).mean()
 
-auto_mpg = auto_trans_grouped.average_mileage.mean() # 21.66
-manual_mpg = manual_trans_grouped.average_mileage.mean() #20.77
+auto_mpg = auto_trans_grouped.average_mileage.mean()
+manual_mpg = manual_trans_grouped.average_mileage.mean()
 
+auto_mpg #20.77
+manual_mpg #21.66
 
 # 2. Joining and Merging
 
@@ -81,19 +80,30 @@ pd.merge(users, roles, left_on='role_id', right_on='id', how='outer')
 #     from env import host, user, password
 #     return url = f'mysql+pymysql://{user}:{password}@{host}/{database_name}'
 
-import pandas as pd
-from env import host, user, password
+def get_db_url(database_name, sub_query):
+    import pandas as pd
+    from env import host, user, password
+    url = f'mysql+pymysql://{user}:{password}@{host}/{database_name}'
+    query = f"SELECT * FROM {database_name}"
+    database_name = pd.read_sql(sub_query, url)
+    return database_name
 
-database_name = "employees"
-query = """SELECT * FROM employees"""
+get_db_url("employees", "dept_emp")
+employees
 
-url = f'mysql+pymysql://{user}:{password}@{host}/{database_name}'
+# import pandas as pd
+# from env import host, user, password
+
+# database_name = "employees"
+# query = """SELECT * FROM employees"""
+
+# url = f'mysql+pymysql://{user}:{password}@{host}/{database_name}'
 
 
 #   b. Use your function to obtain a connection to the employees database.
 
-df = pd.read_sql(query, url)
-df
+get_db_url("employees")
+employees
 
 #   c. Once you have successfully run a query:
 
@@ -142,31 +152,42 @@ titles_dept_name.groupby('dept_name').count()
 # 4. Use your get_db_url function to help you explore the data from the chipotle database. Use the 
 #    data to answer the following questions:
 
-database_name = "chipotle"
-orders_query = """SELECT * FROM orders"""
+get_db_url("chipotle", "orders")
+orders = get_db_url("chipotle", "orders")
 
-url = f'mysql+pymysql://{user}:{password}@{host}/{database_name}'
+# database_name = "chipotle"
+# orders_query = """SELECT * FROM orders"""
 
-orders = pd.read_sql(orders_query, url)
-orders
+# url = f'mysql+pymysql://{user}:{password}@{host}/{database_name}'
+
+# orders = pd.read_sql(orders_query, url)
+# orders
 
 #   a. What is the total price for each order?
+orders_by_item_name = orders[['item_name', 'quantity']].groupby(['item_name']).count().idxmax()
 
 order_id_and_price['price'] = order_id_and_price['item_price'].str.replace('$',' ').str.strip().str.replace(',','_').astype(float)
 order_id_and_price
-
-orders[['order_id', 'item_price']].groupby(['order_id']).sum()
 
 order_price = order_id_and_price[['order_id', 'price']]
 order_price.groupby(['order_id']).sum()
 
 #   b. What are the most popular 3 items?
-orders_by_item_name = orders[['item_name', 'quantity']].groupby(['item_name']).count()
-orders_by_item_name['quantity']
+
+orders[['item_name', 'quantity']].groupby(['item_name']).count().sort_values(by='quantity', ascending=False).head(1)
+
+orders_by_item_name = orders[['item_name', 'quantity']].groupby(['item_name']).count().idxmax()
+orders_by_item_name
 
 #   c. Which item has produced the most revenue?
 
+orders['price'] = orders['item_price'].str.replace('$',' ').str.strip().str.replace(',','_').astype(float)
+orders
 
+orders['revenue'] = orders['quantity'] * orders['price']
+orders
+
+orders[['item_name', 'revenue']].sort_values(by='revenue', ascending=False).head(1)
 
 # More Practice
 
