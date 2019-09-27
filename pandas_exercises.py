@@ -111,6 +111,7 @@ employees_query = """SELECT * FROM employees"""
 titles_query = """SELECT * FROM titles"""
 employees = pd.read_sql(employees_query, url)
 titles = pd.read_sql(titles_query, url)
+titles
 
 #   e. Visualize the number of employees with each title.
 
@@ -131,19 +132,37 @@ employees_and_titles.groupby(['hire_date']).max().tail(1)
 # i. Write the code necessary to create a cross tabulation of the number of titles by department. 
 #      (Hint: this will involve a combination of SQL and python/pandas code)
 
-department_query = """SELECT * FROM department"""
-department = titles = pd.read_sql(department_query, url)
+departments_and_dept_emp_query = """SELECT * FROM departments join dept_emp on dept_emp.dept_no = departments.dept_no"""
+departments_and_dept_emp = pd.read_sql(departments_query, url)
+departments_and_dept_emp
+titles_departments_dept_emp = pd.merge(titles, departments_and_dept_emp)
+titles_dept_name = titles_departments_dept_emp[['title', 'dept_name']]
+titles_dept_name.groupby('dept_name').count()
 
 # 4. Use your get_db_url function to help you explore the data from the chipotle database. Use the 
 #    data to answer the following questions:
 
+database_name = "chipotle"
+orders_query = """SELECT * FROM orders"""
+
+url = f'mysql+pymysql://{user}:{password}@{host}/{database_name}'
+
+orders = pd.read_sql(orders_query, url)
+orders
+
 #   a. What is the total price for each order?
 
+order_id_and_price['price'] = order_id_and_price['item_price'].str.replace('$',' ').str.strip().str.replace(',','_').astype(float)
+order_id_and_price
 
+orders[['order_id', 'item_price']].groupby(['order_id']).sum()
+
+order_price = order_id_and_price[['order_id', 'price']]
+order_price.groupby(['order_id']).sum()
 
 #   b. What are the most popular 3 items?
-
-
+orders_by_item_name = orders[['item_name', 'quantity']].groupby(['item_name']).count()
+orders_by_item_name['quantity']
 
 #   c. Which item has produced the most revenue?
 
