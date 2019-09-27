@@ -80,12 +80,12 @@ pd.merge(users, roles, left_on='role_id', right_on='id', how='outer')
 #     from env import host, user, password
 #     return url = f'mysql+pymysql://{user}:{password}@{host}/{database_name}'
 
-def get_db_url(database_name, sub_query):
+def get_db_url(database_name, table):
     import pandas as pd
     from env import host, user, password
     url = f'mysql+pymysql://{user}:{password}@{host}/{database_name}'
     query = f"SELECT * FROM {database_name}"
-    database_name = pd.read_sql(sub_query, url)
+    database_name = pd.read_sql(table, url)
     return database_name
 
 get_db_url("employees", "dept_emp")
@@ -188,9 +188,3 @@ orders['revenue'] = orders['quantity'] * orders['price']
 orders
 
 orders[['item_name', 'revenue']].sort_values(by='revenue', ascending=False).head(1)
-
-# More Practice
-
-# For even more practice with pandas, you can do the exercises from the SQL module, but 
-# instead of using SQL to do the aggregation, sorting, joining, etc, use pandas. That is, 
-# read the data from all of the tables into pandas dataframes and manipulate the dataframes
