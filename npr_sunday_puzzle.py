@@ -20,15 +20,16 @@ print(words[20000:20005])
 
 # indexed the alphabet from 1 to 26 instead of 0 to 25.
 
-# def sum_last_4_letters(i):
-#     alphabet = pd.Series(list('abcdefghijklmnopqrstuvwxyz'))
-#     alphabet.index = alphabet.index + 1
-#     for word in words:
-#         if len(word) === 5 and int
+def sum_last_4_letters(i):
+    alphabet = pd.Series(list('abcdefghijklmnopqrstuvwxyz'))
+    alphabet.index = alphabet.index + 1
+    for word in words:
+        if len(word) === 5 and int
 
-# for word in words:
-#     if len(word) == 5 and :
-#         print(word)
+
+for word in words:
+    if len(word) == 5 and :
+        print(word)
 
 # need to the sum of the last 4 letters to equal the index value of the first letter.
 
