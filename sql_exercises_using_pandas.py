@@ -11,6 +11,8 @@ def get_db_url(database_name, sub_query):
 
 get_db_url("albums_db", "albums")
 
+# Basic Statements
+
 # Write queries to find the following information.
 
 # The name of all albums by Pink Floyd
@@ -43,3 +45,4 @@ albums[albums['sales'] < 28.0]
 # of "Hard rock" or "Progressive rock"?
 
 albums[albums['genre'].str.contains('Hard rock' or 'Progressive rock')]
+

@@ -30,10 +30,13 @@ manufacturers['average_mileage'].idxmax()
 #   b. How many different manufacturers are there?
 
 mpg['manufacturer'].unique().size
+mpg['manufacturer'].nunique()
+len(mpg['manufacturer'].unique())
 
 #   c. How many different models are there?
 
 mpg.model.unique().size
+mpg.model.nunique()
 
 #   d. Do automatic or manual cars have better miles per gallon?
 
