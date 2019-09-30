@@ -114,8 +114,10 @@ orders
 orders[['item_name', 'revenue']].sort_values(by='revenue', ascending=False).head(4)
 orders
 
+        # Re-indexed in order to use 'item_name' in bar graph
 four_most_popular_items = four_most_popular_items.reset_index()
 
+        # Two barplot graphs of item_name vs revenue and item_name vs quantity
 plt.subplot(211)
 sns.barplot(data=four_most_popular_items, x='item_name', y= 'revenue')
 plt.title('revenue')
@@ -132,3 +134,8 @@ plt.title('quantity')
 
 sleepstudy = data('sleepstudy')
 sleepstudy
+
+sleepstudy[['Reaction', 'Days', 'Subject']].groupby(['Subject']).sum()
+sleepstudy[sleepstudy['Subject'] == 308]
+
+sns.relplot(data=sleepstudy, x='Days', y='Reaction', kind='line', hue='Subject')
