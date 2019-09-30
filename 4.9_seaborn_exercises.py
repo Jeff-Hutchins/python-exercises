@@ -116,6 +116,7 @@ orders
 
         # Re-indexed in order to use 'item_name' in bar graph
 four_most_popular_items = four_most_popular_items.reset_index()
+four_most_popular_items
 
         # Two barplot graphs of item_name vs revenue and item_name vs quantity
 plt.subplot(211)
@@ -125,7 +126,6 @@ plt.title('revenue')
 plt.subplot(212)
 sns.barplot(data=four_most_popular_items, x='item_name', y='quantity')
 plt.title('quantity')
-
 
 
 # 5. Load the sleepstudy data and read it's documentation. Use seaborn to create a line 
@@ -139,3 +139,8 @@ sleepstudy[['Reaction', 'Days', 'Subject']].groupby(['Subject']).sum()
 sleepstudy[sleepstudy['Subject'] == 308]
 
 sns.relplot(data=sleepstudy, x='Days', y='Reaction', kind='line', hue='Subject')
+
+avg_reaction_times = sleepstudy[['Reaction', 'Subject']].groupby(['Subject']).mean().reset_index()
+avg_reaction_times = 
+sleepstudy['Days']
+sns.relplot(data=avg_reaction_times, x='Days', y='Reaction', kind='line')
