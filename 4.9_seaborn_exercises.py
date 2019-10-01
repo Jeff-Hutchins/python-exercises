@@ -27,18 +27,22 @@ iris.describe()
 # 1. What does the distribution of petal lengths look like?
 
 sns.distplot(iris.petal_length)
+plt.show()
 
 # 2. Is there a correlation between petal length and petal width?
 
 sns.relplot(x='petal_length', y='petal_width', data=iris)
+plt.show()
 
 # 3. Would it be reasonable to predict species based on sepal width and sepal length?
 
 sns.relplot(x='sepal_width', y='sepal_length', col='species', data=iris)
+plt.show()
 
 # 4. Which features would be best used to predict species?
 
-
+sns.relplot(x='petal_length', y='petal_width', col='species', hue='species', data=iris)
+plt.show()
 
 # 1. Using the lesson as an example, use seaborn's load_dataset function to load the anscombe 
 # data set. Use pandas to group the data by the dataset column, and calculate summary 
@@ -51,12 +55,16 @@ anscombe.groupby('dataset').describe()
 # Plot the x and y values from the anscombe data. Each dataset should be in a separate column.
 
 sns.relplot(x='x', y='y', col='dataset', data=anscombe)
+plt.show()
 
 # 2. Load the InsectSprays dataset and read it's documentation. Create a boxplot that shows 
 # the effectiveness of the different insect sprays.
 
 insect_sprays = data('InsectSprays')
 insect_sprays
+
+sns.boxplot(data=insect_sprays, y = 'count', x='spray')
+plt.show()
 
 # 3. Load the swiss dataset and read it's documentation. Create visualizations to answer 
 # the following questions:
@@ -72,7 +80,7 @@ swiss['Catholic'].mean()
 swiss['Catholic'] > swiss['Catholic'].mean()
 
 
-#       chose the mean of the 'Catholic' column as the cutoff point.  Greater than the mean = True.
+#chose the mean of the 'Catholic' column as the cutoff point.  Greater than the mean = True.
 swiss['is_catholic'] = swiss['Catholic'] > swiss['Catholic'].mean()
 
 swiss
@@ -81,10 +89,22 @@ swiss
 
 swiss.count()
 swiss[swiss['is_catholic']].is_catholic.count()
+sns.boxplot(x='is_catholic', y='Fertility', data=swiss)
+sns.relplot(x='is_catholic', y='Fertility', data=swiss)
+(x='is_catholic', y='Fertility', data=swiss)
+
+
 
 #   What measure correlates most strongly with fertility?
 
+sns.relplot(x='Education', y='Fertility', data=swiss)
+plt.show()
 
+# sns.relplot(x='Agriculture', y='Fertility', data=swiss)
+# sns.relplot(x='Examination', y='Fertility', data=swiss)
+# sns.relplot(x='Catholic', y='Fertility', data=swiss)
+# sns.relplot(x='Infant.Mortality', y='Fertility', data=swiss)
+# sns.relplot(x='is_catholic', y='Fertility', data=swiss)
 
 # 4. Using the chipotle dataset from the previous exercise, create a bar chart that shows 
 #    the 4 most popular items and the revenue produced by each.
@@ -126,7 +146,7 @@ plt.title('revenue')
 plt.subplot(212)
 sns.barplot(data=four_most_popular_items, x='item_name', y='quantity')
 plt.title('quantity')
-
+plt.show()
 
 # 5. Load the sleepstudy data and read it's documentation. Use seaborn to create a line 
 # chart of all the individual subject's reaction times and a more prominant line showing 
@@ -144,3 +164,4 @@ avg_reaction_times = sleepstudy[['Reaction', 'Subject']].groupby(['Subject']).me
 avg_reaction_times = 
 sleepstudy['Days']
 sns.relplot(data=avg_reaction_times, x='Days', y='Reaction', kind='line')
+plt.show()
